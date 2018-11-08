@@ -1,5 +1,3 @@
 $(() => {
-    
-    let newGame = new Raffle();
-
-})
+  const newGame = new Raffle();
+});
