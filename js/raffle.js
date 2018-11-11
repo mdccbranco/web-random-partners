@@ -1,61 +1,57 @@
 class Raffle {
   constructor() {
     this.students = _.shuffle([{
-        name: 'Andre',
-        img: './img/Andre.jpg',
-      },
-      {
-        name: 'Carol',
-        img: './img/Carol.jpg',
-      },
-      {
-        name: 'Daniel',
-        img: './img/Daniel.jpg',
-      },
-      {
-        name: 'Elaine',
-        img: './img/Elaine.jpg',
-      },
-      {
-        name: 'Gabriel',
-        img: './img/Gabriel.jpg',
-      },
-      {
-        name: 'Guilherme',
-        img: './img/Gui.jpg',
-      },
-      {
-        name: 'Ismael',
-        img: './img/Ismael.jpg',
-      },
-      {
-        name: 'Jeff',
-        img: './img/Jeff.jpg',
-      },
-      {
-        name: 'João',
-        img: './img/Joao.jpg',
-      },
-      {
-        name: 'Mohsan',
-        img: './img/Mohsan.jpg',
-      },
-      {
-        name: 'Radisol',
-        img: './img/Radisol.jpg',
-      },
-      {
-        name: 'Romulo',
-        img: './img/Romulo.jpg',
-      },
-      {
-        name: 'Ronaldo',
-        img: './img/Ronaldo.jpg',
-      },
-      {
-        name: 'Sarah',
-        img: './img/Sarah.jpg',
-      },
+      name: 'Andre',
+      img: './img/Andre.jpg'
+    },
+    {
+      name: 'Carol',
+      img: './img/Carol.jpg'
+    },
+    {
+      name: 'Daniel',
+      img: './img/Daniel.jpg'
+    },
+    {
+      name: 'Elaine',
+      img: './img/Elaine.jpg'
+    },
+    {
+      name: 'Gabriel',
+      img: './img/Gabriel.jpg'
+    },
+    {
+      name: 'Guilherme',
+      img: './img/Gui.jpg'
+    },
+    {
+      name: 'Ismael',
+      img: './img/Ismael.jpg'
+    },
+    {
+      name: 'João',
+      img: './img/Joao.jpg'
+    },
+    {
+      name: 'Mohsan',
+      img: './img/Mohsan.jpg'
+    },
+    {
+      name: 'Radisol',
+      img: './img/Radisol.jpg'
+    },
+    {
+      name: 'Romulo',
+      img: './img/Romulo.jpg'
+    },
+    {
+      name: 'Ronaldo',
+      img: './img/Ronaldo.jpg'
+    },
+    {
+      name: 'Sarah',
+      img: './img/Sarah.jpg'
+    }
     ]);
     this.students.forEach((student) => {
       this.addCard(student);
@@ -72,8 +68,9 @@ class Raffle {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   addCard(card) {
-    const card_el = $(`
+    const cardElement = $(`
         <div class="card" attr-name="${card.name}">
             <div class="side back">
                 <img src="https://www.ironhack.com/assets/shared/logo.svg">
@@ -83,7 +80,7 @@ class Raffle {
             </div>
         </div>
         `);
-    $('#board').append(card_el);
+    $('#board').append(cardElement);
   }
 
   addPaired(name) {
