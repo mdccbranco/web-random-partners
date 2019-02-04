@@ -1,55 +1,57 @@
+const data = [
+  {
+    name: 'Bruno',
+    img: './img/Bruno.jpg'
+  },
+  {
+    name: 'Cristiana',
+    img: './img/Cristiana.jpg'
+  },
+  {
+    name: 'Guilherme',
+    img: './img/Guilherme.jpg'
+  },
+  {
+    name: 'Henrique',
+    img: './img/Henrique.jpg'
+  },
+  {
+    name: 'Ilara',
+    img: './img/Ilara.jpg'
+  },
+  {
+    name: 'Joao',
+    img: './img/Joao.jpg'
+  },
+  {
+    name: 'Jorge',
+    img: './img/Jorge.jpg'
+  },
+  {
+    name: 'Marianna',
+    img: './img/Marianna.jpg'
+  },
+  {
+    name: 'Matheus',
+    img: './img/Matheus.jpg'
+  },
+  {
+    name: 'Murillo',
+    img: './img/Murillo.jpg'
+  },
+  {
+    name: 'Raphael',
+    img: './img/Raphael.jpg'
+  },
+  {
+    name: 'Diego',
+    img: './img/Diego.jpg'
+  }
+];
+
 class Raffle {
   constructor() {
-    this.students = _.shuffle([
-      {
-        name: 'Bruno',
-        img: './img/Bruno.jpg'
-      },
-      {
-        name: 'Cristiana',
-        img: './img/Cristiana.jpg'
-      },
-      {
-        name: 'Guilherme',
-        img: './img/Guilherme.jpg'
-      },
-      {
-        name: 'Henrique',
-        img: './img/Henrique.jpg'
-      },
-      {
-        name: 'Ilara',
-        img: './img/Ilara.jpg'
-      },
-      {
-        name: 'Joao',
-        img: './img/Joao.jpg'
-      },
-      {
-        name: 'Jorge',
-        img: './img/Jorge.jpg'
-      },
-      {
-        name: 'Marianna',
-        img: './img/Marianna.jpg'
-      },
-      {
-        name: 'Matheus',
-        img: './img/Matheus.jpg'
-      },
-      {
-        name: 'Murillo',
-        img: './img/Murillo.jpg'
-      },
-      {
-        name: 'Raphael',
-        img: './img/Raphael.jpg'
-      },
-      {
-        name: 'Karen',
-        img: ''
-      }
-    ]);
+    this.students = _.shuffle(data);
     this.students.forEach(student => {
       this.addCard(student);
     });
@@ -65,7 +67,6 @@ class Raffle {
     });
   }
 
-  // eslint-disable-next-line class-methods-use-this
   addCard(card) {
     const cardElement = $(`
         <div class="card" attr-name="${card.name}">

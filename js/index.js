@@ -1,3 +1,1 @@
-$(() => {
-  const newGame = new Raffle();
-});
+$(() => new Raffle());
