@@ -1,91 +1,87 @@
 const data = [
   {
-    name: 'Adamy',
-    img: './img/Adamy.jpg',
+    name: "Andre",
+    img: "./img/Andre.JPG",
   },
   {
-    name: 'bruno',
-    img: './img/Bruno.jpg',
+    name: "Bruno",
+    img: "./img/Bruno.JPG",
   },
   {
-    name: 'Eric',
-    img: './img/Eric.jpg',
+    name: "Daniel",
+    img: "./img/Daniel.JPG",
   },
   {
-    name: 'Fabio',
-    img: './img/Fabio.jpg',
+    name: "Fabio",
+    img: "./img/Fabio.JPG",
   },
   {
-    name: 'Felipe',
-    img: './img/Felipe.jpg',
+    name: "Fabricio",
+    img: "./img/Fabricio.JPG",
   },
   {
-    name: 'Filipe',
-    img: './img/Filipe.jpg',
+    name: "Gabriel",
+    img: "./img/Gabriel.JPG",
   },
   {
-    name: 'Gabriel',
-    img: './img/Gabriel.jpg',
+    name: "Gabriela",
+    img: "./img/Gabriela.JPG",
   },
   {
-    name: 'Grazi',
-    img: './img/Grazi.jpg',
+    name: "Gustavo",
+    img: "./img/Gustavo.JPG",
   },
   {
-    name: 'Guilherme',
-    img: './img/Guilherme.jpg',
+    name: "Julia",
+    img: "./img/Julia.JPG",
   },
   {
-    name: 'Lucas',
-    img: './img/Lucas.jpg',
+    name: "Marcela",
+    img: "./img/Marcela.JPG",
   },
   {
-    name: 'Marcelle',
-    img: './img/Marcelle.jpg',
+    name: "Massao",
+    img: "./img/Massao.JPG",
   },
   {
-    name: 'Marco',
-    img: './img/Marco.jpg',
+    name: "Pedro",
+    img: "./img/Pedro.JPG",
   },
   {
-    name: 'Marcos',
-    img: './img/Marcos.jpg',
+    name: "Rafael",
+    img: "./img/Rafael.JPG",
   },
   {
-    name: 'Millene',
-    img: './img/Millene.jpg',
+    name: "Rhaysa",
+    img: "./img/Rhaysa.JPG",
   },
   {
-    name: 'Mônica',
-    img: './img/Monica.jpg',
+    name: "Ricky",
+    img: "./img/Ricky.JPG",
   },
   {
-    name: 'Pedro',
-    img: './img/Pedro.jpg',
+    name: "Sebá",
+    img: "./img/Sebá.JPG",
   },
   {
-    name: 'Rafael',
-    img: './img/Rafael.jpg',
-  },
-  {
-    name: 'Saulo',
-    img: './img/Saulo.jpg',
+    name: "Vinicius",
+    img: "./img/Vinicius.JPG",
   },
 ];
 
 class Raffle {
   constructor() {
     this.students = _.shuffle(data);
-    this.students.forEach(student => {
+    this.students.forEach((student) => {
       this.addCard(student);
     });
 
     this.finalPairs = [];
 
-    $('.card').on('click', e => {
-      if (!$(e.currentTarget).hasClass('clicked')) {
-        $(e.currentTarget).addClass('clicked');
-        const name = $(e.currentTarget).attr('attr-name');
+    $(".card").on("click", (e) => {
+      if (!$(e.currentTarget).hasClass("clicked")) {
+        $(e.currentTarget).addClass("clicked");
+        const name = $(e.currentTarget).attr("attr-name");
         this.addPaired(name);
       }
     });
@@ -95,25 +91,26 @@ class Raffle {
     const cardElement = $(`
         <div class="card" attr-name="${card.name}">
             <div class="side back">
-                <img src="https://www.ironhack.com/assets/shared/logo.svg">
             </div>
             <div class="side front">
                 <img src="${card.img}">
             </div>
         </div>
         `);
-    $('#board').append(cardElement);
+    $("#board").append(cardElement);
   }
 
   addPaired(name) {
     this.finalPairs.push(name);
 
-    if (this.finalPairs.length % 2 == 0) {
+    if (this.finalPairs.length % 2 == 0 && this.finalPairs.length < 15) {
       const chunks = _.chunk(this.finalPairs, 2);
-      const pairs = $('#pairs');
+      const pairs = $("#pairs");
       pairs.empty();
-      chunks.forEach(chunk => {
-        const pair = $(`
+      let pair = "";
+
+      chunks.forEach((chunk) => {
+        pair = $(`
                 <div class="pair">
                 <span>${chunk[0]}</span>
                 - 
@@ -122,6 +119,36 @@ class Raffle {
                 `);
         pairs.append(pair);
       });
+    } else if (this.finalPairs.length == 17) {
+      const pairs = $("#pairs");
+      pairs.empty();
+      for(let i = 0; i < this.finalPairs.length; i+=2){
+        if(i<14){
+          let pair = "";
+          pair = $(`
+                  <div class="pair">
+                  <span>${this.finalPairs[i]}</span>
+                  - 
+                  <span>${this.finalPairs[i+1]}</span>
+                  </div>
+                  `);
+          pairs.append(pair);
+        } else if(i === 16){
+          const pairs = $("#pairs");
+          // pairs.empty();
+          let pair = "";
+          pair = $(`
+                  <div class="pair">
+                  <span>${this.finalPairs[i-2]}</span>
+                  - 
+                  <span>${this.finalPairs[i-1]}</span>
+                  - 
+                  <span>${this.finalPairs[i]}</span>
+                  </div>
+                  `);
+          pairs.append(pair);
+        }
+      }
     }
   }
 }
